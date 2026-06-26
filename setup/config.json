@@ -1,0 +1,16 @@
+{
+  "functie_kleuren": {
+    "standaard": {"bg": "#3B8ED0", "hover": "#367FA9", "tekst": "#FFFFFF"}
+  },
+  "communicatie_data": [],
+  "medicatie": [
+    "Levothyroxine 75mg - 1 tablet 's ochtends nuchter (Graves Basedow)",
+    "Bisoprolol 1,25 mg - 1 tablet 's morgends (betablokker)",
+    "Lyxiana 60mg - 1 tablet 's avonds (Bloedverdunner)"
+  ],
+  "opmerkingen": [
+    "Hernia discalis L5-S1 met hevige uitsralende pijn:",
+    "Lixiana 60mg werd gestopt",
+    "4 x per dag ibuprofen 600mg + 1000mg Paracetamol"
+  ]
+}
