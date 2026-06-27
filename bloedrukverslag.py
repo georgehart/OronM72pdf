@@ -24,17 +24,26 @@ csv_pad = sys.argv[1]
 if not os.path.exists(csv_pad):
     raise FileNotFoundError(f"Het bestand {csv_pad} werd niet gevonden. Controleer het opgegeven pad.")
 
-# Laad JSON config voor medicatie en opmerkingen
+# Laad JSON config voor medicatie, opmerkingen en personalia
 try:
     import json
     with open(CONFIG_FILE, "r", encoding="utf-8") as f:
         config_data = json.load(f)
+    
+    # Haal de lijsten op
     medicatie_lijst = config_data.get("medicatie", ["Geen medicatie opgegeven."])
     opmerkingen_lijst = config_data.get("opmerkingen", ["Geen extra opmerkingen."])
+    
+    # ---- VOEG DEZE REGEL TOE ----
+    # We pakken het eerste item [0] uit de personalia-lijst en halen de "naam" op.
+    personalia = config_data.get("personalia", [{}])
+    patient_naam = personalia[0].get("naam", "Onbekende Patiënt") if personalia else "Onbekende Patiënt"
+
 except Exception as e:
     print(f"Kon config niet laden uit JSON: {e}")
     medicatie_lijst = ["Fout bij laden van medicatieconfiguratie."]
     opmerkingen_lijst = ["Fout bij laden van opmerkingen."]
+    patient_naam = "Georges Hart" # Val terug op de standaardnaam bij een fout
 
 df = pd.read_csv(csv_pad, usecols=range(5))
 
